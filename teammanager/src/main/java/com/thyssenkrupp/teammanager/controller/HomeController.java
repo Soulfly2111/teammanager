@@ -20,4 +20,12 @@ public class HomeController {
 		
 	    return "index";
 	  }
+	
+	@RequestMapping("/admin")
+	  public String admin(Model model) {
+		model.addAttribute("name", "Heiner");
+		model.addAttribute("categories", categoryDao.findAll()); 
+		
+	    return "admin";
+	  }
 }
