@@ -85,10 +85,8 @@
 
 
 $( "[id|='category']" ).click(function() {
-	
-	console.log($(this));
-	var categoryId = $(this)[0].id.substring($(this)[0].id.indexOf('-')+1);
-	console.log(categoryId);
+	$("#projects").empty();
+	var categoryId = $(this)[0].id.substring($(this)[0].id.indexOf('-')+1);	
 		$.ajax({
 		  url: "getCategory?id=" + categoryId 		 
 		}).done(function(category) {
