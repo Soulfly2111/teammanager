@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 
 @Transactional
-public interface CategoryDao  extends CrudRepository<Category, Long>  {
+public interface ProjectDao  extends CrudRepository<Project, Long>  {
 
-	public List<Category> findAll();
+	public List<Project> findAll();
 }

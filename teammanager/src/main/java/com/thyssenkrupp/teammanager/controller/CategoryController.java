@@ -1,5 +1,7 @@
 package com.thyssenkrupp.teammanager.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,13 +10,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thyssenkrupp.teammanager.models.Category;
+import com.thyssenkrupp.teammanager.models.Project;
 import com.thyssenkrupp.teammanager.models.CategoryDao;
+import com.thyssenkrupp.teammanager.models.ProjectDao;
 
 @Controller
 public class CategoryController {
 	
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private ProjectDao projectDao;
 	
 	  @RequestMapping("/createCategory")
 	  @ResponseBody
@@ -36,5 +43,10 @@ public class CategoryController {
 	    public @ResponseBody Category getCategory(
 	    		@RequestParam(value="id", required=true) String id) {
 	        return categoryDao.findOne(Long.valueOf(id));	        			        		
+	    }
+	  
+	  @RequestMapping("/getProjects")
+	    public @ResponseBody List<Project> getProject() {
+	        return projectDao.findAll();	        			        		
 	    }
 }
